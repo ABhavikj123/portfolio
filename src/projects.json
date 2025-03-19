@@ -1,0 +1,25 @@
+[
+    {
+      "title": "ContestWeb Site",
+      "description": "A website where you can find all the information about the contest that running, upcoming and past contest from different platform Like code force, codechef, leetcode.",
+      "image": "/project1.png",
+      "skills": ["Next.js", "TypeScript", " Redux Toolkit", "TailwindCSS"],
+      "github": "https://github.com/ABhavikj123/contestweb.git",
+      "demo": "https://contestweb.vercel.app"
+    },
+    {
+      "title": "Hotel booking website",
+      "description": "A website where you can book hotel rooms and see the details of the hotel.",
+      "image": "/project3.png",
+      "skills": ["TypeScript", "MERN stack","Postgresql", "TailwindCSS", "mui/material"],
+      "github": "https://github.com/ABhavikj123/hotel.git"
+    },
+    {
+      "title": "News Website",
+      "description": "A news website that fetches news from different sources and allows users to search for news articles.",
+      "image": "/project2.png",
+      "skills": ["React.js", "Vite", "Bootstrap", "NewsAPI"],
+      "github": "https://github.com/ABhavikj123/NEWSWEB.git"
+    }
+  ]
+  
