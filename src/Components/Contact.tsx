@@ -1,4 +1,4 @@
-import { Github, Linkedin, Mail, Phone } from 'lucide-react';
+import { Github, Linkedin, Mail } from 'lucide-react';
 import { motion } from 'framer-motion';
 import React, { memo } from 'react';
 
@@ -37,13 +37,6 @@ const contacts: Contact[] = [
     link: 'mailto:bhavikjoshi8989@gmail.com',
     username: 'Bhavik Joshi',
     color: 'from-red-500 to-red-700'
-  },
-  {
-    icon: Phone,
-    label: 'Phone',
-    link: 'tel:+917738282085',
-    username: 'Bhavik Joshi',
-    color: 'from-green-500 to-green-700'
   }
 ];
 
