@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 
 interface Star {
   x: number;
@@ -9,60 +9,50 @@ interface Star {
 }
 
 export const StarBackground = () => {
-  const [stars, setStars] = useState<Star[]>([]);
-  const animationFrameId = useRef<number | null>(null); 
+  const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
-    const createStars = () => {
-      const newStars: Star[] = [];
-      for (let i = 0; i < 100; i++) {
-        newStars.push({
-          x: Math.random() * window.innerWidth,
-          y: Math.random() * window.innerHeight,
-          size: Math.random() * 2,
-          opacity: Math.random(),
-          speed: Math.random() * 0.5 + 0.1,
-        });
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    
+    const ctx = canvas.getContext('2d');
+    // Set canvas to full window size
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    
+    // Create stars array
+    const stars: Star[] = [];
+    for (let i = 0; i < 100; i++) {
+      stars.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        size: Math.random() * 2,
+        opacity: Math.random(),
+        speed: Math.random() * 0.5 + 0.1,
+      });
+    }
+    
+    const animate = () => {
+      if (!ctx) return;
+      // Clear the canvas
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      
+      // Draw and update each star
+      for (const star of stars) {
+        star.y += star.speed;
+        if (star.y > canvas.height) star.y = 0;
+        
+        ctx.beginPath();
+        ctx.arc(star.x, star.y, star.size, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(255,255,255,${star.opacity})`;
+        ctx.fill();
       }
-      setStars(newStars);
+      
+      requestAnimationFrame(animate);
     };
-
-    createStars();
-
-    const updateStars = () => {
-      setStars(prevStars =>
-        prevStars.map(star => {
-          const newY = star.y + star.speed;
-          return { ...star, y: newY > window.innerHeight ? 0 : newY };
-        })
-      );
-      animationFrameId.current = requestAnimationFrame(updateStars);
-    };
-
-    animationFrameId.current = requestAnimationFrame(updateStars);
-
-    return () => {
-      if (animationFrameId.current !== null) {
-        cancelAnimationFrame(animationFrameId.current);
-      }
-    };
+    
+    animate();
   }, []);
 
-  return (
-    <div className="fixed inset-0 bg-black">
-      {stars.map((star, index) => (
-        <div
-          key={index}
-          className="absolute rounded-full bg-white"
-          style={{
-            left: `${star.x}px`,
-            top: `${star.y}px`,
-            width: `${star.size}px`,
-            height: `${star.size}px`,
-            opacity: star.opacity,
-          }}
-        />
-      ))}
-    </div>
-  );
+  return <canvas className="fixed inset-0 bg-black" ref={canvasRef} />;
 };
