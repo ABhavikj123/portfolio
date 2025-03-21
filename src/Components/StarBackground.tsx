@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 
 interface Star {
   x: number;
@@ -9,60 +9,67 @@ interface Star {
 }
 
 export const StarBackground = () => {
-  const [stars, setStars] = useState<Star[]>([]);
-  const animationFrameId = useRef<number | null>(null); 
+  const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
-    const createStars = () => {
-      const newStars: Star[] = [];
-      for (let i = 0; i < 100; i++) {
-        newStars.push({
-          x: Math.random() * window.innerWidth,
-          y: Math.random() * window.innerHeight,
-          size: Math.random() * 2,
-          opacity: Math.random(),
-          speed: Math.random() * 0.5 + 0.1,
-        });
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+    
+    // Handle high-DPI screens (mobile)
+    const dpr = window.devicePixelRatio || 1;
+    const width = window.innerWidth;
+    const height = window.innerHeight;
+    canvas.width = width * dpr;
+    canvas.height = height * dpr;
+    canvas.style.width = `${width}px`;
+    canvas.style.height = `${height}px`;
+    ctx.scale(dpr, dpr);
+
+    // Create stars
+    const numStars = 100;
+    const stars: Star[] = [];
+    for (let i = 0; i < numStars; i++) {
+      stars.push({
+        x: Math.random() * width,
+        y: Math.random() * height,
+        size: Math.random() * 2,
+        opacity: Math.random(),
+        speed: Math.random() * 0.5 + 0.1,
+      });
+    }
+
+    // Animation loop
+    const animate = () => {
+      ctx.clearRect(0, 0, width, height);
+
+      for (const star of stars) {
+        star.y += star.speed;
+        if (star.y > height) {
+          star.y = 0;
+        }
+        ctx.beginPath();
+        ctx.arc(star.x, star.y, star.size, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(255,255,255,${star.opacity})`;
+        ctx.fill();
       }
-      setStars(newStars);
+
+      requestAnimationFrame(animate);
     };
 
-    createStars();
-
-    const updateStars = () => {
-      setStars(prevStars =>
-        prevStars.map(star => {
-          const newY = star.y + star.speed;
-          return { ...star, y: newY > window.innerHeight ? 0 : newY };
-        })
-      );
-      animationFrameId.current = requestAnimationFrame(updateStars);
-    };
-
-    animationFrameId.current = requestAnimationFrame(updateStars);
-
-    return () => {
-      if (animationFrameId.current !== null) {
-        cancelAnimationFrame(animationFrameId.current);
-      }
-    };
+    animate();
   }, []);
 
   return (
-    <div className="fixed inset-0 bg-black">
-      {stars.map((star, index) => (
-        <div
-          key={index}
-          className="absolute rounded-full bg-white"
-          style={{
-            left: `${star.x}px`,
-            top: `${star.y}px`,
-            width: `${star.size}px`,
-            height: `${star.size}px`,
-            opacity: star.opacity,
-          }}
-        />
-      ))}
-    </div>
+    <canvas
+      ref={canvasRef}
+      style={{
+        width: '100%',
+        height: '100%',
+        backgroundColor: 'transparent',
+      }}
+    />
   );
 };

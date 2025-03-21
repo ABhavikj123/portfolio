@@ -8,11 +8,17 @@ import projects from './projects.json';
 
 function App() {
   return (
-    <div className="relative min-h-screen bg-gradient-to-b from-black via-purple-900 to-black text-white overflow-x-hidden">
-      <StarBackground />
+    <div className="relative min-h-screen overflow-x-hidden">
+      {/* 1) Gradient behind everything */}
+      <div className="absolute inset-0 -z-20 bg-gradient-to-b from-black via-purple-900 to-black" />
 
-      <div className="container mx-auto px-4 py-20 relative z-20">
-      
+      {/* 2) Star canvas above the gradient, behind content */}
+      <div className="absolute inset-0 -z-10 pointer-events-none">
+        <StarBackground />
+      </div>
+
+      {/* 3) Main content on top */}
+      <div className="relative z-10 container mx-auto px-4 py-20 text-white">
         <Hero />
 
         <motion.section
@@ -21,7 +27,6 @@ function App() {
           transition={{ delay: 0.5 }}
           className="mb-32"
         >
-        
           <h2 className="text-4xl md:text-5xl font-extrabold text-center mb-8 pb-2 bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-600">
             Digital Cosmos
           </h2>
@@ -30,7 +35,6 @@ function App() {
           </div>
         </motion.section>
 
-        
         <motion.section
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
