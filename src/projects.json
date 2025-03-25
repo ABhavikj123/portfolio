@@ -8,18 +8,19 @@
       "demo": "https://contestweb.vercel.app"
     },
     {
+      "title":"MessageCraft",
+      "description":"Developed an AI-driven tool to generate professional emails, messages, and cover letters.",
+      "image":"/project2.png",
+      "skills":["Next.js", "TypeScript", "React Hook Form", "TailwindCSS"],
+      "github":"https://github.com/ABhavikj123/aimailgenerator.git",
+      "demo":"https://aimailgenerator.vercel.app"
+    },
+    {
       "title": "Hotel booking website",
       "description": "A website where you can book hotel rooms and see the details of the hotel.",
       "image": "/project3.png",
       "skills": ["TypeScript", "MERN stack","Postgresql", "TailwindCSS", "mui/material"],
       "github": "https://github.com/ABhavikj123/hotel.git"
-    },
-    {
-      "title": "News Website",
-      "description": "A news website that fetches news from different sources and allows users to search for news articles.",
-      "image": "/project2.png",
-      "skills": ["React.js", "Vite", "Bootstrap", "NewsAPI"],
-      "github": "https://github.com/ABhavikj123/NEWSWEB.git"
     }
   ]
   
