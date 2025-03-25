@@ -11,7 +11,7 @@
       "title":"MessageCraft",
       "description":"Developed an AI-driven tool to generate professional emails, messages, and cover letters.",
       "image":"/project2.png",
-      "skills":["Next.js", "TypeScript", "React Hook Form", "TailwindCSS"],
+      "skills":["Next.js", "TypeScript", " Redux Toolkit", "TailwindCSS"],
       "github":"https://github.com/ABhavikj123/aimailgenerator.git",
       "demo":"https://aimailgenerator.vercel.app"
     },
