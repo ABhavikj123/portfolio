@@ -31,7 +31,7 @@ export const ProjectCard = ({ project, index }: ProjectCardProps) => {
         ease: [0.25, 0.1, 0.25, 1],
       }}
       viewport={{ once: true, margin: "-50px" }}
-      className="relative h-[500px] group"
+      className="relative h-[550px] group"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
@@ -95,7 +95,7 @@ export const ProjectCard = ({ project, index }: ProjectCardProps) => {
           </motion.h3>
 
           {/* Description */}
-          <p className="text-gray-300 text-sm mb-4 line-clamp-3">{project.description}</p>
+          <p className="text-gray-300 text-sm mb-4">{project.description}</p>
 
           {/* Skills */}
           <div className="flex flex-wrap gap-2 mb-auto">

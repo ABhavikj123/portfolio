@@ -1,7 +1,7 @@
 [
     {
       "title": "ContestWeb Site",
-      "description": "A website where you can find all the information about the contest that running, upcoming and past contest from different platform Like code force, codechef, leetcode.",
+      "description": "Find all contest info in one place: running, upcoming, and past contests from CodeForce, CodeChef and more",
       "image": "/project1.png",
       "skills": ["Next.js", "TypeScript", " Redux Toolkit", "TailwindCSS"],
       "github": "https://github.com/ABhavikj123/contestweb.git",
@@ -17,9 +17,9 @@
     },
     {
       "title": "Hotel booking website",
-      "description": "A website where you can book hotel rooms and see the details of the hotel.",
+      "description": "A website for hotel booking with a user-friendly interface and seamless booking process.",
       "image": "/project3.png",
-      "skills": ["TypeScript", "MERN stack","Postgresql", "TailwindCSS", "mui/material"],
+      "skills": ["MERN","Postgresql", "TailwindCSS", "mui/material"],
       "github": "https://github.com/ABhavikj123/hotel.git"
     }
   ]
