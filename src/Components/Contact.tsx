@@ -1,4 +1,4 @@
-import { Github, Linkedin, Mail } from 'lucide-react';
+import { Github, Linkedin, Mail,X } from 'lucide-react';
 import { motion } from 'framer-motion';
 import React, { memo } from 'react';
 
@@ -30,7 +30,13 @@ const contacts: Contact[] = [
     username: 'Bhavik Joshi',
     color: 'from-blue-500 to-blue-700'
   },
-  
+  {
+    icon: X,
+    label: 'X',
+    link: 'https://x.com/BhavikJoshi7738?t=LoLtZqEyG8UYbYKt2aaDYw&s=08',
+    username: 'Bhavik Joshi',
+    color: 'from-blue-400 to-blue-600'
+  },
   {
     icon: Mail,
     label: 'Email',
