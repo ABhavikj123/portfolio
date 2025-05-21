@@ -5,7 +5,7 @@ import { ProjectCard } from './Components/ProjectCard';
 import { Contact } from './Components/Contact';
 import { Hero } from './Components/Hero';
 import projects from './projects.json';
-
+import { Analytics } from '@vercel/analytics/react';
 function App() {
   return (
     <div className="relative min-h-screen overflow-x-hidden">
@@ -63,6 +63,7 @@ function App() {
           <Contact />
         </motion.section>
       </div>
+      <Analytics />
     </div>
   );
 }

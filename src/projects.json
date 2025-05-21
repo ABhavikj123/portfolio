@@ -16,6 +16,14 @@
       "demo":"https://aimailgenerator.vercel.app"
     },
     {
+      "title":"MathMind",
+      "description":"Test your mental math skills. Remember the sequence, calculate the result, and train your brain!",
+      "image":"/project4.png",
+      "skills":["Next.js", "DSA", "TailwindCSS"],
+      "github":"https://github.com/ABhavikj123/mathmind.git",
+      "demo":"https://mathmind-eight.vercel.app/"
+    },
+    {
       "title": "Hotel booking website",
       "description": "A website for hotel booking with a user-friendly interface and seamless booking process.",
       "image": "/project3.png",
